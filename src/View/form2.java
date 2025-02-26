@@ -1,33 +1,86 @@
 package View;
 
-import Model.ff;
 import Model.ff1;
+import java.awt.BorderLayout;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class form2 extends javax.swing.JFrame {
 
     ArrayList<ff1> userList = new ArrayList<>();
-    
+    private javax.swing.JLabel clockLabel;
+    private javax.swing.JPanel clockPanel;
 /////////////////////////////////// Contructor
+
     public form2() {
         initComponents();
         setLocationRelativeTo(null);
+        initClock();
     }
 /////////////////////// parameter contructor
+
     public form2(String userName) {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         userList = new DAO.ConnectionSQL().getListUser();
-        if(!userName.equals("admin")){
+        if (!userName.equals("admin")) {
             btManageCate.setVisible(false);
             btNewProduct.setVisible(false);
-            btEdit.setVisible(false);
+
         }
+        initClock();
+    }
+
+    private void initClock() {
+
+        clockPanel = new javax.swing.JPanel();
+        clockPanel.setPreferredSize(new java.awt.Dimension(210, 100));
+
+        clockLabel = new javax.swing.JLabel();
+        clockLabel.setFont(new Font("Arial", Font.BOLD, 40));
+        clockPanel.add(clockLabel);
+        getContentPane().add(clockPanel, BorderLayout.NORTH); // Đặt clockPanel ở trên cùng
+
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateClock();
+            }
+        });
+        timer.start();
+        updateClock();
+    }
+
+    // load clock
+    private int updateClock() {
+        String currentTime = new SimpleDateFormat("HH:mm:ss").format(new Date());
+        clockLabel.setText(currentTime);
+        return 'A';
+    }
+//
+
+    public static int Sum(int a, int b) {
+        int sum = a + b;
+        return -1;
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,9 +91,9 @@ public class form2 extends javax.swing.JFrame {
         btPlaceOrder = new javax.swing.JButton();
         btManageCate = new javax.swing.JButton();
         btNewProduct = new javax.swing.JButton();
-        btEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 51, 204));
 
         btLogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
@@ -51,6 +104,7 @@ public class form2 extends javax.swing.JFrame {
             }
         });
 
+        btChangePassword.setBackground(new java.awt.Color(255, 102, 51));
         btChangePassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btChangePassword.setText("Change password");
         btChangePassword.addActionListener(new java.awt.event.ActionListener() {
@@ -59,13 +113,27 @@ public class form2 extends javax.swing.JFrame {
             }
         });
 
+        btViewBill.setBackground(new java.awt.Color(102, 51, 255));
         btViewBill.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btViewBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/View Bills & Order Placed Details.png"))); // NOI18N
         btViewBill.setText("View bill ");
+        btViewBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btViewBillActionPerformed(evt);
+            }
+        });
 
+        btPlaceOrder.setBackground(new java.awt.Color(255, 255, 51));
         btPlaceOrder.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btPlaceOrder.setText("Place Order");
+        btPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPlaceOrderActionPerformed(evt);
+            }
+        });
 
+        btManageCate.setBackground(new java.awt.Color(102, 204, 255));
+        btManageCate.setForeground(new java.awt.Color(255, 255, 102));
         btManageCate.setText("Manage Category");
         btManageCate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +141,8 @@ public class form2 extends javax.swing.JFrame {
             }
         });
 
+        btNewProduct.setBackground(new java.awt.Color(153, 153, 255));
+        btNewProduct.setForeground(new java.awt.Color(153, 255, 102));
         btNewProduct.setText("add New Product");
         btNewProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,46 +150,44 @@ public class form2 extends javax.swing.JFrame {
             }
         });
 
-        btEdit.setText("View, Edit & Delete");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btManageCate)
-                    .addComponent(btPlaceOrder))
-                .addGap(53, 53, 53)
+                    .addComponent(btManageCate, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btNewProduct)
-                        .addGap(43, 43, 43)
-                        .addComponent(btEdit)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(62, 62, 62)
+                        .addComponent(btNewProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btViewBill)
-                        .addGap(70, 70, 70)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btViewBill, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btChangePassword)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 800, Short.MAX_VALUE)
-                        .addComponent(btLogout)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 743, Short.MAX_VALUE)
+                        .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btViewBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btChangePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(608, 608, 608)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btLogout)
-                    .addComponent(btChangePassword)
-                    .addComponent(btViewBill)
-                    .addComponent(btPlaceOrder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 792, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btManageCate)
-                    .addComponent(btNewProduct)
-                    .addComponent(btEdit))
+                    .addComponent(btManageCate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btNewProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -128,9 +196,20 @@ public class form2 extends javax.swing.JFrame {
 //////////////////////////////////////button close
     private void btLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoutActionPerformed
         // TODO add your handling code here:
+        int option = JOptionPane.showOptionDialog(
+                rootPane,
+                "Bạn chắc chắn muốn đăng xuất không ?",
+                "WARNING !",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE,
+                null,
+                null,
+                null);
 
-        setVisible(false);
-        new form3().setVisible(true);
+        if (option == JOptionPane.YES_OPTION) {
+            setVisible(false);
+            new form3().setVisible(true);
+        }
     }//GEN-LAST:event_btLogoutActionPerformed
 /////////////////////// button Manage Category
     private void btManageCateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btManageCateActionPerformed
@@ -143,7 +222,7 @@ public class form2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         new form6().setVisible(true);
         setVisible(false);
-        
+
     }//GEN-LAST:event_btNewProductActionPerformed
 ////////////////// button foget password
     private void btChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChangePasswordActionPerformed
@@ -152,7 +231,75 @@ public class form2 extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btChangePasswordActionPerformed
 
-    
+    private void btPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPlaceOrderActionPerformed
+        // Tạo biểu tượng từ file hình ảnh
+        ImageIcon icon = new ImageIcon("F:\\Downloads\\skull.png"); // Đường dẫn đến file hình ảnh
+
+        while (true) {
+            int option = JOptionPane.showOptionDialog(
+                    rootPane,
+                    "Bị lừa rồi ku",
+                    "Cho 5tr thì out !",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    icon,
+                    null,
+                    null
+            );
+
+            if (option == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(rootPane, "ib để mở khóa", "Con gà của thầy", JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+                try {
+                    Desktop.getDesktop().browse(new URI("https://www.facebook.com/atus.005"));
+
+                    new form7().setVisible(true);
+                    break;
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Không có 5tr bố  không mở mắt");
+            }
+        }
+    }//GEN-LAST:event_btPlaceOrderActionPerformed
+
+    private void btViewBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewBillActionPerformed
+        // TODO add your handling code here:
+        // Tạo biểu tượng từ file hình ảnh
+        ImageIcon icon = new ImageIcon("F:\\Downloads\\skull.png"); // Đường dẫn đến file hình ảnh
+
+        while (true) {
+            int option = JOptionPane.showOptionDialog(
+                    rootPane,
+                    "Bị lừa rồi ku",
+                    "Cho 5tr thì out !",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    icon,
+                    null,
+                    null
+            );
+
+            if (option == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(rootPane, "ib để mở khóa", "Con gà của thầy", JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+                try {
+                    Desktop.getDesktop().browse(new URI("https://www.facebook.com/atus.005"));
+
+                    new form7().setVisible(true);
+                    break;
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Không có 5tr bố  không mở mắt");
+            }
+        }
+    }//GEN-LAST:event_btViewBillActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -164,16 +311,24 @@ public class form2 extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(form2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form2.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(form2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form2.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(form2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form2.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(form2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form2.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -188,7 +343,6 @@ public class form2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btChangePassword;
-    private javax.swing.JButton btEdit;
     private javax.swing.JButton btLogout;
     private javax.swing.JButton btManageCate;
     private javax.swing.JButton btNewProduct;

@@ -3,6 +3,7 @@ package View;
 import DAO.ConnectionSQL;
 import Model.ff;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -202,7 +203,7 @@ public class form4 extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             ff food = new ff();
-            
+
             txtID.setText(String.valueOf(i));
             String category = (String) cbCategory.getSelectedItem();
             String foodName = txtFood.getText();
@@ -235,18 +236,16 @@ public class form4 extends javax.swing.JFrame {
             int index = tblFood.getSelectedRow();
             TableModel model = tblFood.getModel();
 
-           
-            String id = model.getValueAt(index, 0).toString();  
+            String id = model.getValueAt(index, 0).toString();
 
             // Hiển thị hộp thoại xác nhận
             int a = JOptionPane.showConfirmDialog(rootPane, "Bạn có muốn xóa ID: " + id + "?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
 
             if (a == JOptionPane.YES_OPTION) {
-                 
+
                 new DAO.ConnectionSQL().delete(id);
                 JOptionPane.showMessageDialog(rootPane, "Delele complete.");
 
-               
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Lỗi: " + e.getMessage());
@@ -273,13 +272,13 @@ public class form4 extends javax.swing.JFrame {
     private void txtFoodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFoodKeyReleased
         // TODO add your handling code here:
         validateFields();
-        
+
     }//GEN-LAST:event_txtFoodKeyReleased
 
     private void txtPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyReleased
         // TODO add your handling code here:
         validateFields();
-        
+
     }//GEN-LAST:event_txtPriceKeyReleased
 //////////////////////////// display food method
 
@@ -290,27 +289,56 @@ public class form4 extends javax.swing.JFrame {
             });
         }
     }
+
     /////////////////////////////validate Fields
-    public void validateFields(){
+    public void validateFields() {
         String foodName = txtFood.getText();
         String price = txtPrice.getText();
         try {
-            if(!foodName.equals("") && !price.equals("")){
-            btSave.setEnabled(true);
-        }else{
-            btSave.setEnabled(false);
-        }
+            if (!foodName.equals("") && !price.equals("")) {
+                btSave.setEnabled(true);
+            } else {
+                btSave.setEnabled(false);
+            }
         } catch (Exception e) {
             System.out.println("Error: " + e.toString());
         }
     }
-    
-//////////////// clear method
 
+    //
+    public void pt2() {
+       Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập hệ số a: ");
+        double a = scanner.nextDouble(); 
+
+        System.out.print("Nhập hệ số b: ");
+        double b = scanner.nextDouble();  
+
+        
+        double c = scanner.nextDouble(); 
+
+       
+        double delta = b + b - 4 * a * c;  
+
+        
+        if (delta > 0) {
+            System.out.println("Phương trình có hai nghiệm phân biệt.");
+        } else if (delta == 0) {
+            System.out.println("Phương trình có nghiệm kép.");
+        } else {
+            System.out.println("Phương trình vô nghiệm.");
+        }
+
+        scanner.close();
+    
+    }
+
+//////////////// clear method
     public void clear() {
         txtPrice.setText("");
         txtFood.setText("");
-        
+
     }
 
     public static void main(String args[]) {
