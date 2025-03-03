@@ -65,13 +65,14 @@ public class form2 extends javax.swing.JFrame {
         });
         timer.start();
         updateClock();
+        // Code thừa
     }
 
     // load clock
     private int updateClock() {
         String currentTime = new SimpleDateFormat("HH:mm:ss").format(new Date());
         clockLabel.setText(currentTime);
-        return 'A';
+        return 'A';// Sai
     }
 //
 
