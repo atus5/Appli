@@ -8,7 +8,7 @@ public class ff {
     private String food;
 
     public int getId() {
-        return id;
+        return id; // dit con me may 
     }
 
     public void setId(int id) {
