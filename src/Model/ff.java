@@ -1,18 +1,13 @@
-
 package Model;
 
-// con cac 123456
+
 public class ff {
     private int id;
     private String category;
     private String food;
 
     public int getId() {
-<<<<<<< HEAD
-        return id; // dit em bao ngoc 202 
-=======
-        return id; // dit em bao ngoc 202
-
+        return id; // dit em ngoc phong 202 chay nuoc lon
     }
 
     public void setId(int id) {
