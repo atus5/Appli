@@ -54,6 +54,7 @@ public class ConnectionSQL {
                 user.setPassWord(rs.getString("passWord"));
                 user.setEmail(rs.getString("email"));
                 user.setPhoneNumber(rs.getString("phone"));
+                System.out.println("Login success");
                 System.out.println("userName: " + user.getUserName());
                 System.out.println("password: " + user.getPassWord());
                 System.out.println("email   : " + user.getEmail());
