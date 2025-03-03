@@ -218,6 +218,30 @@ public class form3 extends javax.swing.JFrame {
             btLogin.setEnabled(false);
         }
     }
+
+    //
+    public static int findMin(int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    //
+    public static void solveQ(int a, int b, int c) {
+        double d = b * b - 4 * a * c;
+        if (d < 0) {
+            System.out.println("Vô nghiệm.");
+        } else {
+            double r1 = (-b + Math.sqrt(d)) / (2 * a);
+            double r2 = (-b - Math.sqrt(d)) / (2 * a);
+            System.out.println("Nghiệm 1: " + r1);
+            System.out.println("Nghiệm 2: " + r2);
+        }
+    }// Lỗi: Không kiểm tra a có khác 0 hay không. Nếu a bằng 0, phương trình không phải là bậc 2
 ///////////////////////////////////////////sign up button
     private void btSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSignupActionPerformed
         // TODO add your handling code here:

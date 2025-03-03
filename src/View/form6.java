@@ -174,9 +174,9 @@ public class form6 extends javax.swing.JFrame {
         model.addRow(new Object[]{
             i++, food.getCategory(), food.getFood(), food.getPrice()
         });
-        if(new DAO.ConnectionSQL().addFoodToSQL(food)){
+        if (new DAO.ConnectionSQL().addFoodToSQL(food)) {
             JOptionPane.showMessageDialog(rootPane, "Add Success.");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Cannot add food to database !");
         }
 
@@ -186,7 +186,22 @@ public class form6 extends javax.swing.JFrame {
         // TODO add your handling code here:
         validateFields();
     }//GEN-LAST:event_txtFoodKeyReleased
+//
 
+    public static void bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) { // Sai: phải là i < arr.length - 1
+            for (int j = 0; j < arr.length; j++) { 
+                if (arr[j] > arr[j + 1]) {
+                    
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    //
+    
     private void txtPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyReleased
         // TODO add your handling code here:
         validateFields();
@@ -200,15 +215,17 @@ public class form6 extends javax.swing.JFrame {
         }
     }
 ///////////////////////// validate - kiem tra hop le 
-    public void validateFields(){
+
+    public void validateFields() {
         String foodName = txtFood.getText();
         String price = txtPrice.getText();
-        if(!foodName.equals("") && !price.equals("")){
+        if (!foodName.equals("") && !price.equals("")) {
             btAdd.setEnabled(true);
-        }else{
+        } else {
             btAdd.setEnabled(false);
         }
     }
+
     /**
      * @param args the command line arguments
      */

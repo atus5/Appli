@@ -26,6 +26,12 @@ public class form4 extends javax.swing.JFrame {
         btSave.setEnabled(false);
     }
 
+    public static void solveC(int a, int b, int c, int d) {
+        double r = -b / (3 * a); // Sai logic
+        System.out.println("Nghiệm: " + r);
+    }
+    //Lỗi: Giả định rằng phương trình bậc 3 luôn có một nghiệm thực. Phương trình bậc 3 có thể có một, hai hoặc ba nghiệm thực, tùy thuộc vào hệ số
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -252,6 +258,9 @@ public class form4 extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tblFoodMouseClicked
+    public static boolean isEven(int num) {
+        return num % 2 != 0; // Sai: phải kiểm tra num % 2 == 0
+    }
 ////////////////////////////////// button save to database
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
         // TODO add your handling code here:
@@ -307,21 +316,18 @@ public class form4 extends javax.swing.JFrame {
 
     //
     public void pt2() {
-       Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Nhập hệ số a: ");
-        double a = scanner.nextDouble(); 
+        double a = scanner.nextDouble();
 
         System.out.print("Nhập hệ số b: ");
-        double b = scanner.nextDouble();  
+        double b = scanner.nextDouble();
 
-        
-        double c = scanner.nextDouble(); 
+        double c = scanner.nextDouble();
 
-       
-        double delta = b + b - 4 * a * c;  
+        double delta = b + b - 4 * a * c;
 
-        
         if (delta > 0) {
             System.out.println("Phương trình có hai nghiệm phân biệt.");
         } else if (delta == 0) {
@@ -331,7 +337,7 @@ public class form4 extends javax.swing.JFrame {
         }
 
         scanner.close();
-    
+
     }
 
 //////////////// clear method

@@ -21,7 +21,7 @@ public class form5 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); // Để đóng ứng dụng khi nhấn nút đóng
         setLocationRelativeTo(null); // Để cửa sổ hiển thị ở giữa màn hình
         setVisible(true);
-        
+
     }
 
     /**
@@ -186,7 +186,8 @@ public class form5 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tuActionPerformed
 //save to database
-    public void saVe(){
+
+    public void saVe() {
         ff1 user = new ff1();
         user.setUserName(bun.getText());
         user.setPassWord(bon.getText());
@@ -201,11 +202,31 @@ public class form5 extends javax.swing.JFrame {
             }
         }
     }
+    public double fibonaci(int n){
+        if(n==0 || n==1){
+            return -1;// Sai logic
+        }else{
+            return fibonaci(n-1) + fibonaci(n-2);// fibonaci(n-1) - fibonaci(n-2) mới đúng
+        }
+        
+    }
+
+    public static boolean soNguyenTo(int n) {
+        if (n <= 1) {
+            return true; // Sai
+        }
+        for (int i = 2; i <= n; i++) { // Sai: phải là i < n
+            if (n % i == 0) {
+                return false; // Sai: trả về false ngay khi tìm thấy ước
+            }
+        }
+        return true; // Trả về true cho tất cả số > 1
+    }
 /////////////// Save button
     private void bunkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bunkActionPerformed
-        
+
         checkNum();
-         
+
     }//GEN-LAST:event_bunkActionPerformed
 ///////////////////// ///////////////////////////////////////////////////////KeyReleased
     private void Keyreleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Keyreleased
@@ -233,7 +254,7 @@ public class form5 extends javax.swing.JFrame {
         bun.setText("FFFF");
         bon.setText("FFFF");
         chan.setText("FFFF");
-    }
+  }// Hiển thị kí tự không hợp lệ
 
     //////// ///////////////////////////////////////////////////////////////////////Validate - Kiem tra hop le
     public void validateFields() {
@@ -243,8 +264,8 @@ public class form5 extends javax.swing.JFrame {
         String phoneNumber = ff.getText();
         String phoneParterm = "^[0-9]*$";
         String emailParterm = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
-        if (!userName.equals("") && !password.equals("") && email.matches(emailParterm) && phoneNumber.matches(phoneParterm) ) {
-             
+        if (!userName.equals("") && !password.equals("") && email.matches(emailParterm) && phoneNumber.matches(phoneParterm)) {
+
             bunk.setEnabled(true);
 
         } else {
@@ -256,12 +277,15 @@ public class form5 extends javax.swing.JFrame {
 
     public void checkNum() {
         String phoneNumber = ff.getText();
-        if (phoneNumber.length() < 10  && phoneNumber.equals("")) { 
+        if (phoneNumber.length() < 10 && phoneNumber.equals("")) {
             JOptionPane.showMessageDialog(null, "Phone number must have 10numbers !");
         } else {
-           saVe();
+            saVe();
         }
     }
+    public static boolean soAm(int num) {
+    return num >= 0; // Sai, số âm num < 0
+}
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
