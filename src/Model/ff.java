@@ -8,7 +8,11 @@ public class ff {
     private String food;
 
     public int getId() {
+<<<<<<< HEAD
         return id; // dit em bao ngoc 202 
+=======
+        return id; // dit em bao ngoc 202
+
     }
 
     public void setId(int id) {
