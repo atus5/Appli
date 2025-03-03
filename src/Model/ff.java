@@ -1,4 +1,3 @@
-
 package Model;
 
 
@@ -8,7 +7,7 @@ public class ff {
     private String food;
 
     public int getId() {
-        return id; // dit em bao ngoc 202
+        return id; // dit em ngoc phong 202 chay nuoc lon
     }
 
     public void setId(int id) {
