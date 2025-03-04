@@ -7,7 +7,7 @@ public class ff {
     private String food;
 
     public int getId() {
-        return id; // tú dz chim to 123456
+        return id; ádasdawda////
     }
 
     public void setId(int id) {
