@@ -7,7 +7,7 @@ public class ff {
     private String food;
 
     public int getId() {
-        return id; // dit em ngoc phong 202 chay nuoc lon
+        return id; // tú dz chim to 123456
     }
 
     public void setId(int id) {
