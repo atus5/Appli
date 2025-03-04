@@ -32,7 +32,7 @@ public class ff {
 
     public float getPrice() {
         return price;
-    }
+    }// code nay sai
 
     public void setPrice(float price) {
         this.price = price;
