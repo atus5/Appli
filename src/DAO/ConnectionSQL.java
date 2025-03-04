@@ -12,7 +12,14 @@ public class ConnectionSQL {
     public ConnectionSQL() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=CoffeeManagementJava;user=sa;password=123;encrypt=true;trustServerCertificate=true;");
+            connection = DriverManager.getConnection(THE_VARIABLE_GOES_HERE);
+            // Cut that connection string and put it in a separate file and read its variable here, because this is not secure and anyone could see your password... luckly this is a test repo with local database.
+            // To do this create a file name it ".env", then inside will be something like this:
+            //   CONNECT_STR=jdbc:sqlserver://localhost:1433;databaseName=CoffeeManagementJava;user=sa;password=123;encrypt=true;trustServerCertificate=true;
+            // Somehow you need to figure out how to read that variable in this file... I've forgotten how but you can check AI or youtube, and you'll replace THE_VARIABLE_GOES_HERE above
+            // Thats not all, now you must hide the file from your github so we never see, everyone who uses a repo must create their own database! So you must create a .gitignore file and put the file name ".env" so it will be ignored by git
+            // I will create an empty .gitignore file for you, you do the rest!
+            // This is useful for hiding files necessary for your project but are confidential
         } catch (Exception e) {
             e.printStackTrace();
         }
