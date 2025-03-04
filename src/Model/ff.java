@@ -5,11 +5,11 @@ public class ff {
     private int id;
     private String category;
     private String food;
-///// câccacacacacacc
+
     public int getId() {
         return id; 
     }
-
+//concac dau byoi dit em ngioc
     public void setId(int id) {
         this.id = id;
     }
@@ -32,7 +32,7 @@ public class ff {
 
     public float getPrice() {
         return price;
-    }// code nay sai
+    }
 
     public void setPrice(float price) {
         this.price = price;
