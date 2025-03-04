@@ -9,7 +9,7 @@ public class ff {
     public int getId() {
         return id; 
     }
-//concac dau byoi dit em ngioc
+
     public void setId(int id) {
         this.id = id;
     }
