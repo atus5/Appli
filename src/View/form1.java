@@ -3,7 +3,7 @@ package View;
 import Model.ff1;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+// sai rôi ne kuuu
 public class form1 extends javax.swing.JFrame {
 // code dai quaaaaaaa
     ArrayList<ff1> userList = new ArrayList<>();
@@ -12,7 +12,7 @@ public class form1 extends javax.swing.JFrame {
     public form1() {
         initComponents();
         userList = new DAO.ConnectionSQL().getListUser();
-
+/eeeee
         txtNewPassword.setEnabled(false);
         txtPhone.setEnabled(false);
         btSearch.setEnabled(false);
