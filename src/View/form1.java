@@ -1,5 +1,5 @@
 package View;
-
+/ădadawdadd
 import Model.ff1;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
