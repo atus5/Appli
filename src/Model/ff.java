@@ -1,6 +1,6 @@
 package Model;
 
-// bug here
+ 
 public class ff {
     private int id;
     private String category;
@@ -17,7 +17,7 @@ public class ff {
     public String getCategory() {
         return category;
     }
-// bug here
+ 
     public void setCategory(String category) {
         this.category = category;
     }
