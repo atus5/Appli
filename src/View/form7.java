@@ -111,7 +111,7 @@ public class form7 extends javax.swing.JFrame {
             new form2().setVisible(true);
         }
         do {
-            if (kt == false) {
+            if (kt == false) {// Tên biến chưa rõ ràng khó cho việc chỉnh sửa, nhận dạng
 
                 count--;
                 JOptionPane.showMessageDialog(rootPane, "Bạn đã nhập sai, còn " + count + " lần thử");
@@ -120,7 +120,7 @@ public class form7 extends javax.swing.JFrame {
 
         } while (count < 0);
 
-        while (count == 0) {
+        /*while (count == 0) {
             int option = JOptionPane.showOptionDialog(
                     rootPane,
                     "Đã hết lượt thử",
@@ -131,7 +131,7 @@ public class form7 extends javax.swing.JFrame {
                     null,
                     null
             );
-        }
+        }*///Format chưa tốt
 
     }
 
