@@ -189,7 +189,7 @@ public class form6 extends javax.swing.JFrame {
 //
 
     public static void bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) { // Sai: phải là i < arr.length - 1
+        for (int i = 0; i < arr.length; i++) { //Sai logic phải là "arr.length-1"
             for (int j = 0; j < arr.length; j++) { 
                 if (arr[j] > arr[j + 1]) {
                     
@@ -200,7 +200,6 @@ public class form6 extends javax.swing.JFrame {
             }
         }
     }
-    //
     
     private void txtPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyReleased
         // TODO add your handling code here:
